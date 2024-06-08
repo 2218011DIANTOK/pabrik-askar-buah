@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\RegisterController;
+=======
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
+
+>>>>>>> 8198bda (Initial commit)
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +29,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -69,3 +78,30 @@ Route::get('/deleteadmin/{id_admin}', [AdminController::class, 'deleteadmin'])->
 
 
 Route::get('/gagasan/data', [App\Http\Controllers\GagasanController::class, 'getData'])->name('gagasan.data');
+=======
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'home']);
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+// Route::get('/home', function() {
+//     return view('home');
+// })->name('home')->middleware('auth');
+
+
+Route::get('/home', [HomeController::class, 'home']);
+
+Route::resource('users', \App\Http\Controllers\UserController::class)
+    ->middleware('auth');
+
+    Route::resource('/users', \App\Http\Controllers\UserController::class)
+    ->middleware('auth');
+
+>>>>>>> 8198bda (Initial commit)
